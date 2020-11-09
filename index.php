@@ -14,22 +14,29 @@ if ($config === null) {
 
 if(isset($config['passwords'][$_POST['pass']])) {
     $_SESSION['env'] = $config['passwords'][$_POST['pass']];
+    header("Location: /");
 }
 
-if(isset($_POST['logout'])) {
+if(isset($_POST['logout']) || isset($_GET['logout'])) {
     unset($_SESSION['env']);
+    header("Location: /");
 }
 
 
-include('templates/header.html');
+include('templates/header.php');
 
 if(isset($_SESSION['env'])) {
     echo $_SESSION['env'];
 
-    include('templates/formularz.html');
+    if($_GET['page'] == 'lista') 
+        include('templates/lista.php');
+    if($_GET['page'] == 'losuj')
+        include('templates/losuj.php');
+    else 
+        include('templates/formularz.php');
 }
 else {
-    include('templates/logowanie.html');
+    include('templates/logowanie.php');
 }
 
-include('templates/footer.html');
+include('templates/footer.php');
