@@ -9,7 +9,7 @@
     Pamiętaj że jest to jednorazowe i nieodwracalne więc zastanów się dwa razy.</p>
 
 <form method="post" action="/losuj" onSubmit="return confirm('Czy na pewno chcesz losować?')">
-    <select name="chooser">
+    <select name="losujacy">
         <option>Kim jesteś?</option>
         <?php if($lista) { 
             foreach($lista as $id=>$osoba) {

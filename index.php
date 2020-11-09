@@ -26,7 +26,7 @@ if(isset($_POST['logout']) || $_GET['page'] == 'logout') {
 
 
 $lista = getDBFile('lista');
-$wylosowane = getDBFile('wylosowanie');
+$wylosowani = getDBFile('wylosowani');
 
 
 if($_GET['page'] == 'zapisz') {
@@ -42,7 +42,9 @@ if($_GET['page'] == 'zapisz') {
 }
 
 if($_GET['page'] == 'losuj') {
-    
+    losuj($_POST['losujacy']);
+
+    header("Location: /");
 }
 
 
