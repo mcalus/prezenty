@@ -14,4 +14,6 @@ function losuj($losujacy) {
         $wylosowani[] = ['imie'=>$imie, 'mail'=>$mail, 'timestamp'=>date('Y-m-d H:i:s')];
         file_put_contents('db/wylosowani.json', json_encode($wylosowani));
     }
+
+    return $wylosowany;
 }

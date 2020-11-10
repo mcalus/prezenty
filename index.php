@@ -42,7 +42,13 @@ if($_GET['page'] == 'zapisz') {
 }
 
 if($_GET['page'] == 'losuj') {
-    losuj($_POST['losujacy']);
+    $wylosowany = losuj($_POST['losujacy']);
+
+    if($wylosowany) {
+        $wylosowani[] = $wylosowany;
+        file_put_contents('db/lista.json', json_encode($wylosowani));
+    }
+
 
     header("Location: /");
 }
