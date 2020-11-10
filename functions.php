@@ -10,9 +10,10 @@ function getDBFile($name) {
 
 
 function losuj($losujacy) {
+    $wylosowany = null;
+
     if($losujacy) {
-        $wylosowani[] = ['imie'=>$imie, 'mail'=>$mail, 'timestamp'=>date('Y-m-d H:i:s')];
-        file_put_contents('db/wylosowani.json', json_encode($wylosowani));
+        $wylosowany = 'A';
     }
 
     return $wylosowany;

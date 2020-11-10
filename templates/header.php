@@ -19,4 +19,6 @@
 
 <br />
 
+<div class="message"><?=$message?></div>
+
 <?php } ?>

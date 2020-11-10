@@ -3,6 +3,7 @@
 session_start();
 
 require_once('functions.php');
+$homepage = '/lista';
 
 $f_config = file_get_contents("db/config.json");
 if ($f_config === false) {
@@ -16,12 +17,14 @@ if ($config === null) {
 
 if(isset($config['passwords'][$_POST['pass']])) {
     $_SESSION['env'] = $config['passwords'][$_POST['pass']];
+    $_SESSION['message'] = 'Zalogowano!';
     header("Refresh: 0");
 }
 
 if(isset($_POST['logout']) || $_GET['page'] == 'logout') {
     unset($_SESSION['env']);
-    header("Location: /");
+    $_SESSION['message'] = 'Wylogowano!';
+    header("Location: ".$homepage);
 }
 
 
@@ -36,9 +39,11 @@ if($_GET['page'] == 'zapisz') {
     if($imie) {
         $lista[] = ['imie'=>$imie, 'mail'=>$mail, 'timestamp'=>date('Y-m-d H:i:s')];
         file_put_contents('db/lista.json', json_encode($lista));
+
+        $_SESSION['message'] = 'Zapisano Cie do listy';
     }
     
-    header("Location: /");
+    header("Location: ".$homepage);
 }
 
 if($_GET['page'] == 'losuj') {
@@ -46,11 +51,18 @@ if($_GET['page'] == 'losuj') {
 
     if($wylosowany) {
         $wylosowani[] = $wylosowany;
-        file_put_contents('db/lista.json', json_encode($wylosowani));
+        file_put_contents('db/wylosowani.json', json_encode($wylosowani));
+
+        $_SESSION['message'] = 'Wylosowales swoja osobe na swieta '. date('Y') .': '. $wylosowany;
     }
 
+    header("Location: ".$homepage);
+}
 
-    header("Location: /");
+$message = '';
+if($_SESSION['message']) {
+    $message = $_SESSION['message'];
+    unset($_SESSION['message']);
 }
 
 
