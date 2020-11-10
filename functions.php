@@ -9,11 +9,11 @@ function getDBFile($name) {
 }
 
 
-function losuj($losujacy) {
-    $wylosowany = null;
+function losuj($losujacy, $lista_losuj) {
+    $wylosowany = array();
 
     if($losujacy) {
-        $wylosowany = 'A';
+        $wylosowany[$losujacy] = array_rand($lista_losuj);
     }
 
     return $wylosowany;

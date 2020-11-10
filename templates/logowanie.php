@@ -1,5 +1,5 @@
 
 Logowanie
 <form method="post">
-    <input type="text" name="pass" placeholder="hasło" />
+    <input type="password" name="pass" placeholder="hasło" />
 </form>

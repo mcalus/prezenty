@@ -40,21 +40,27 @@ if($_GET['page'] == 'zapisz') {
         $lista[] = ['imie'=>$imie, 'mail'=>$mail, 'timestamp'=>date('Y-m-d H:i:s')];
         file_put_contents('db/lista.json', json_encode($lista));
 
-        $_SESSION['message'] = 'Zapisano Cie do listy';
+        $_SESSION['message'] = 'Zapisano Cię do listy';
     }
     
     header("Location: ".$homepage);
 }
 
 if($_GET['page'] == 'losuj') {
-    $wylosowany = losuj($_POST['losujacy']);
+    if(!$wylosowani)
+        $wylosowani = array();
+    print_r(array_merge($wylosowani, array($_POST['losujacy'] => null)));
+    $lista_losuj = array_diff($lista, array_merge($wylosowani, array($_POST['losujacy'] => null)));
+    print_r($lista_losuj);
+    array_merge($wylosowani, losuj($_POST['losujacy'], $lista_losuj));
+    print_r($wylosowani);
 
-    if($wylosowany) {
-        $wylosowani[] = $wylosowany;
+    // if($wylosowany) {
+        // $wylosowani[] = $wylosowany;
         file_put_contents('db/wylosowani.json', json_encode($wylosowani));
 
-        $_SESSION['message'] = 'Wylosowales swoja osobe na swieta '. date('Y') .': '. $wylosowany;
-    }
+        $_SESSION['message'] = 'Wylosowałes swoją osobę na święta '. date('Y') .': '. $wylosowany[$_POST['losujacy']];
+    // }
 
     header("Location: ".$homepage);
 }
