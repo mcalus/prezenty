@@ -1,5 +1,7 @@
 #snowflakes{
-    position:absolute;top:0;left:0
+    position:absolute;
+    top:0;
+    left:0;
     background-image: linear-gradient(bottom, rgb(105,173,212) 0%, rgb(23,82,145) 84%);
     background-image: -o-linear-gradient(bottom, rgb(105,173,212) 0%, rgb(23,82,145) 84%);
     background-image: -moz-linear-gradient(bottom, rgb(105,173,212) 0%, rgb(23,82,145) 84%);

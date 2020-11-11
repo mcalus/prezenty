@@ -20,20 +20,22 @@ function getDBFile($name) {
 // Draw for picker one random person from the list
 function draw($picker, $draw_from, $list_drawn) {
     $choosen = array();
-
+    
     // Check if person which is choosing already exist on the list
-    if($picker && in_array($picker, $draw_from)) {
+    if($picker !== false && isset($draw_from[$picker])) {
         // Exclude yourself and all drawn
-        print_r(array_merge($list_drawn, array($picker => null)));
-        $list_draw = array_diff($draw_from, array_merge($list_drawn, array($picker => null)));
-        print_r($list_draw);
+        // print_r(array_merge($list_drawn, array($picker => array())));
+        // print_r($list_drawn);
+        // print_r($draw_from);
+        // $list_draw = array_diff($draw_from, array_merge($list_drawn, array($picker => null)));
+        // print_r($list_draw);
         
         // Exclude yourself
-        // unset($draw_from[$picker]);
+        unset($draw_from[$picker]);
         // Exclude all choosen ones
-        // foreach($list_drawn as $drawn['picked']) {
-        //     unset($draw_from[$drawn['picked']]);
-        // }
+        foreach($list_drawn as $drawn['picked']) {
+            unset($draw_from[$drawn['picked']]);
+         }
 
         // Make sure that you will not stay with option to choose only yourself
         // Cases:

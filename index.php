@@ -41,16 +41,16 @@ if($_GET['page'] == 'save') {
 }
 
 // ACTION - draw a person from the list
-if($_GET['page'] == 'draw') {
+if($_GET['page'] == 'pick') {
     $choosen = draw($_POST['picker'], $list, $drawn);
     print_r($choosen);
-    array_merge($drawn, $choosen);
+    $drawn = array_merge($drawn, $choosen);
     print_r($drawn);
 
     if($choosen) {
         file_put_contents('db/drawn.json', json_encode($drawn));
 
-        $_SESSION['message'] = 'Wylosowałes swoją osobę na święta '. date('Y') .': '. $choosen[$_POST['picker']];
+        $_SESSION['message'] = 'Wylosowałes swoją osobę na święta '. date('Y') .': '. $list[$choosen[$_POST['picker']]]['name'];
     }
 
     header("Location: ".$homepage);

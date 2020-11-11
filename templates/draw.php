@@ -8,7 +8,7 @@
 <p>Tutaj możesz wylosować sobie osobę do robienia prezentu. 
     Pamiętaj że jest to jednorazowe i nieodwracalne więc zastanów się dwa razy.</p>
 
-<form method="post" action="/draw" onSubmit="return confirm('Czy na pewno chcesz losować?')">
+<form method="post" action="/pick" onSubmit="return confirm('Czy na pewno chcesz losować?')">
     <select name="picker">
         <option>Kim jesteś?</option>
         <?php if($list) { 
