@@ -2,69 +2,62 @@
 
 session_start();
 
+// All starting variables (maybe that should be CONST)
 require_once('functions.php');
-$homepage = '/lista';
+$homepage = '/list';
+$config = getDBFile('config');
+$list = getDBFile('list');
+$drawn = getDBFile('drawn');
 
-$f_config = file_get_contents("db/config.json");
-if ($f_config === false) {
-    // deal with error...
-}
 
-$config = json_decode($f_config, true);
-if ($config === null) {
-    // deal with error...
-}
-
+// ACTION - Logging into system
 if(isset($config['passwords'][$_POST['pass']])) {
     $_SESSION['env'] = $config['passwords'][$_POST['pass']];
     $_SESSION['message'] = 'Zalogowano!';
     header("Refresh: 0");
 }
 
+// ACTION - Logout from the system
 if(isset($_POST['logout']) || $_GET['page'] == 'logout') {
     unset($_SESSION['env']);
     $_SESSION['message'] = 'Wylogowano!';
     header("Location: ".$homepage);
 }
 
+// ACTION - Save person to a list
+if($_GET['page'] == 'save') {
+    $name = trim($_POST['name']);
+    // $mail = trim($_POST['mail']);
+    $mail = '';
 
-$lista = getDBFile('lista');
-$wylosowani = getDBFile('wylosowani');
+    if($name) {
+        $list[] = ['name'=>$name, 'mail'=>$mail, 'timestamp'=>date('Y-m-d H:i:s')];
+        file_put_contents('db/list.json', json_encode($list));
 
-
-if($_GET['page'] == 'zapisz') {
-    $imie = trim($_POST['imie']);
-    $mail = trim($_POST['mail']);
-
-    if($imie) {
-        $lista[] = ['imie'=>$imie, 'mail'=>$mail, 'timestamp'=>date('Y-m-d H:i:s')];
-        file_put_contents('db/lista.json', json_encode($lista));
-
-        $_SESSION['message'] = 'Zapisano Cię do listy';
+        $_SESSION['message'] = 'Zapisano Cię do listy prezentów na rok '.date('Y');
     }
     
     header("Location: ".$homepage);
 }
 
-if($_GET['page'] == 'losuj') {
-    if(!$wylosowani)
-        $wylosowani = array();
-    print_r(array_merge($wylosowani, array($_POST['losujacy'] => null)));
-    $lista_losuj = array_diff($lista, array_merge($wylosowani, array($_POST['losujacy'] => null)));
-    print_r($lista_losuj);
-    array_merge($wylosowani, losuj($_POST['losujacy'], $lista_losuj));
-    print_r($wylosowani);
+// ACTION - draw a person from the list
+if($_GET['page'] == 'draw') {
+    $choosen = draw($_POST['picker'], $list, $drawn);
+    print_r($choosen);
+    array_merge($drawn, $choosen);
+    print_r($drawn);
 
-    // if($wylosowany) {
-        // $wylosowani[] = $wylosowany;
-        file_put_contents('db/wylosowani.json', json_encode($wylosowani));
+    if($choosen) {
+        file_put_contents('db/drawn.json', json_encode($drawn));
 
-        $_SESSION['message'] = 'Wylosowałes swoją osobę na święta '. date('Y') .': '. $wylosowany[$_POST['losujacy']];
-    // }
+        $_SESSION['message'] = 'Wylosowałes swoją osobę na święta '. date('Y') .': '. $choosen[$_POST['picker']];
+    }
 
     header("Location: ".$homepage);
 }
 
+
+// Get flash messages from other actions
 $message = '';
 if($_SESSION['message']) {
     $message = $_SESSION['message'];
@@ -72,19 +65,28 @@ if($_SESSION['message']) {
 }
 
 
+
+// HTML template header
 include('templates/header.php');
 
+// Check if you are looged in and to which environment
 if(isset($_SESSION['env'])) {
     echo $_SESSION['env'] . "<br /><br />"; 
 
+    // Which sub page to display
     switch($_GET['page']) {
-        case 'lista': include('templates/lista.php'); break;
-        case 'losowanie': include('templates/losowanie.php'); break;
-        default: include('templates/formularz.php'); 
+        // List of all saved persons
+        case 'list': include('templates/list.php'); break;
+        // Form to choose as who you want to draw a person
+        case 'draw': include('templates/draw.php'); break;
+        // Form to save on list
+        default: include('templates/form.php'); 
     }
 }
 else {
-    include('templates/logowanie.php');
+    // When you are not logged in
+    include('templates/login.php');
 }
 
+// HTML template footer
 include('templates/footer.php');
