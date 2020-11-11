@@ -1,0 +1,12 @@
+
+body {
+    background-color: #F00;
+    background-image: url('img/bg1.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: #FFF;
+    padding: 50px;
+    margin: 0;
+    height: 100%;
+}
