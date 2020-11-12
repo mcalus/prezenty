@@ -10,8 +10,22 @@ body {
     padding: 130px 140px;
     margin: 0;
     height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .picked {
     color: green;
+}
+
+.drawPopup {
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    /* width: 50%;
+    height: 30%; */
+    padding: 50px;
+    border-radius: 20%;
+    background-color: #FFF;
+    margin: auto;
+    font-size: 80px;
 }

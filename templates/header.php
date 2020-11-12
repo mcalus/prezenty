@@ -10,6 +10,17 @@
 
 <body class="container" id="mainBody">
 
+<?php if($_SESSION['choosen']) { ?>
+<div class="drawPopup">
+    Święta <?=date('Y')?>
+    <br />
+    <?=$list[$_SESSION['choosen']['picker']]['name']?> robi prezent dla <b><?=$list[$_SESSION['choosen']['picked']]['name']?></b>
+</div>
+<?php 
+    unset($_SESSION['choosen']); 
+} 
+?>
+
 <!-- <canvas id="snowflakes"></canvas> -->
 
 <?php if(isset($_SESSION['env'])) { ?>

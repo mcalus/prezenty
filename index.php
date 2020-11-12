@@ -59,6 +59,8 @@ if($_GET['page'] == 'pick') {
         file_put_contents('db/drawn.json', json_encode($drawn, JSON_FORCE_OBJECT));
 
         $_SESSION['message'] = 'Wylosowałes swoją osobę na święta '. date('Y') .': <b>'. $list[$choosen['picked']]['name'] .'</b>';
+        $_SESSION['choosen'] = $choosen;
+        $_SESSION['choosen']['picker'] = $_POST['picker'];
     }
     
     header("Location: ".$homepage);
