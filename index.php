@@ -20,6 +20,7 @@ if($_POST['pass']) {
     }
 
     header("Refresh: 0");
+    die();
 }
 
 // ACTION - Logout from the system
@@ -27,6 +28,7 @@ if(isset($_POST['logout']) || $_GET['page'] == 'logout') {
     unset($_SESSION['env']);
     $_SESSION['message'] = 'Wylogowano!';
     header("Location: ".$homepage);
+    die();
 }
 
 // ACTION - Save person to a list
@@ -43,6 +45,7 @@ if($_GET['page'] == 'save') {
     }
     
     header("Location: ".$homepage);
+    die();
 }
 
 // ACTION - draw a person from the list
@@ -55,10 +58,11 @@ if($_GET['page'] == 'pick') {
 
         file_put_contents('db/drawn.json', json_encode($drawn, JSON_FORCE_OBJECT));
 
-        $_SESSION['message'] = 'Wylosowałes swoją osobę na święta '. date('Y') .': '. $list[$choosen['picked']]['name'];
+        $_SESSION['message'] = 'Wylosowałes swoją osobę na święta '. date('Y') .': <b>'. $list[$choosen['picked']]['name'] .'</b>';
     }
     
     header("Location: ".$homepage);
+    die();
 }
 
 

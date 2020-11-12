@@ -48,6 +48,6 @@
 
 <br />
 
-<div class="message"><?=$message?></div>
-
 <?php } ?>
+
+<div class="message"><?=$message?></div>
