@@ -10,9 +10,15 @@ $list = getDBFile('list');
 $drawn = getDBFile('drawn');
 
 // ACTION - Logging into system
-if(isset($config['passwords'][$_POST['pass']])) {
-    $_SESSION['env'] = $config['passwords'][$_POST['pass']];
-    $_SESSION['message'] = 'Zalogowano!';
+if($_POST['pass']) {
+    if(isset($config['passwords'][$_POST['pass']])) {
+        $_SESSION['env'] = $config['passwords'][$_POST['pass']];
+        $_SESSION['message'] = 'Zalogowano!';
+    }
+    else {
+        $_SESSION['message'] = 'Błędne hasło!';
+    }
+
     header("Refresh: 0");
 }
 
@@ -41,19 +47,17 @@ if($_GET['page'] == 'save') {
 
 // ACTION - draw a person from the list
 if($_GET['page'] == 'pick') {
-    $choosen = draw($_POST['picker'], $list, $drawn);
+    $choosen = draw($_POST['picker'], $list, $drawn, $_POST['spouse']);
 
     if($choosen) {
-        print_r($choosen);
         // $drawn = array_merge($drawn, $choosen);
         $drawn[$_POST['picker']] = $choosen;
-        print_r($drawn);
 
         file_put_contents('db/drawn.json', json_encode($drawn, JSON_FORCE_OBJECT));
 
         $_SESSION['message'] = 'Wylosowałes swoją osobę na święta '. date('Y') .': '. $list[$choosen['picked']]['name'];
     }
-
+    
     header("Location: ".$homepage);
 }
 
@@ -64,7 +68,6 @@ if($_SESSION['message']) {
     $message = $_SESSION['message'];
     unset($_SESSION['message']);
 }
-
 
 
 // HTML template header

@@ -18,7 +18,7 @@ function getDBFile($name) {
 
 
 // Draw for picker one random person from the list
-function draw($picker, $draw_from, $list_drawn) {
+function draw($picker, $draw_from, $list_drawn, $spouse = false) {
     $choosen = array();
     
     // Check if person which is choosing already exist on the list
@@ -33,8 +33,10 @@ function draw($picker, $draw_from, $list_drawn) {
         // Exclude yourself
         unset($draw_from[$picker]);
         // Exclude all choosen ones
-        foreach($list_drawn as $drawn['picked']) {
-            unset($draw_from[$drawn['picked']]);
+        foreach($list_drawn as $drawn) {
+            if(isset($draw_from[$drawn['picked']])) {
+                unset($draw_from[$drawn['picked']]);
+            }
          }
 
         // Make sure that you will not stay with option to choose only yourself
@@ -57,13 +59,18 @@ function draw($picker, $draw_from, $list_drawn) {
                 unset($draw_from[$check[0]]);
             }
         }
-
-        // Optionally also excluding spouses
+        // *Optionally also excluding spouses if we have somebody else to draw
+        elseif($config['spouses'] && $spouse && count($draw_from) > 1) {
+            unset($draw_from[$spouse]);
+        }
 
         // If there is anything to choose do it!
-        if(!isset($draw_from[$picker])) { 
+        if(!isset($draw_from[$picker]) && count($draw_from) > 0) { 
             // $choosen[$picker] = ['picked'=>array_rand($draw_from), 'timestamp'=>date('Y-m-d H:i:s')];
             $choosen = ['picked'=>array_rand($draw_from), 'timestamp'=>date('Y-m-d H:i:s')];
+        }
+        else {
+            $_SESSION['message'] = 'Błąd losowania!';
         }
     }
 

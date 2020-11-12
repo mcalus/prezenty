@@ -17,7 +17,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/">Zapisz się</a>
     <a class="navbar-brand" href="/list">Lista</a>
-<?php if($config['powerOn']) { ?>
+<?php if($config['drawOpen']) { ?>
     <a class="navbar-brand" href="/draw">Losowanie</a>
 <?php } ?>
     <a class="navbar-brand" href="/logout">Wyloguj</a>
