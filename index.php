@@ -9,7 +9,6 @@ $config = getDBFile('config');
 $list = getDBFile('list');
 $drawn = getDBFile('drawn');
 
-
 // ACTION - Logging into system
 if(isset($config['passwords'][$_POST['pass']])) {
     $_SESSION['env'] = $config['passwords'][$_POST['pass']];
@@ -32,7 +31,7 @@ if($_GET['page'] == 'save') {
 
     if($name) {
         $list[] = ['name'=>$name, 'mail'=>$mail, 'timestamp'=>date('Y-m-d H:i:s')];
-        file_put_contents('db/list.json', json_encode($list));
+        file_put_contents('db/list.json', json_encode($list, JSON_FORCE_OBJECT));
 
         $_SESSION['message'] = 'Zapisano Cię do listy prezentów na rok '.date('Y');
     }
@@ -43,14 +42,16 @@ if($_GET['page'] == 'save') {
 // ACTION - draw a person from the list
 if($_GET['page'] == 'pick') {
     $choosen = draw($_POST['picker'], $list, $drawn);
-    print_r($choosen);
-    $drawn = array_merge($drawn, $choosen);
-    print_r($drawn);
 
     if($choosen) {
-        file_put_contents('db/drawn.json', json_encode($drawn));
+        print_r($choosen);
+        // $drawn = array_merge($drawn, $choosen);
+        $drawn[$_POST['picker']] = $choosen;
+        print_r($drawn);
 
-        $_SESSION['message'] = 'Wylosowałes swoją osobę na święta '. date('Y') .': '. $list[$choosen[$_POST['picker']]]['name'];
+        file_put_contents('db/drawn.json', json_encode($drawn, JSON_FORCE_OBJECT));
+
+        $_SESSION['message'] = 'Wylosowałes swoją osobę na święta '. date('Y') .': '. $list[$choosen['picked']]['name'];
     }
 
     header("Location: ".$homepage);

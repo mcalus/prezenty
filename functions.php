@@ -62,7 +62,8 @@ function draw($picker, $draw_from, $list_drawn) {
 
         // If there is anything to choose do it!
         if(!isset($draw_from[$picker])) { 
-            $choosen[$picker] = ['picked'=>array_rand($draw_from), 'timestamp'=>date('Y-m-d H:i:s')];
+            // $choosen[$picker] = ['picked'=>array_rand($draw_from), 'timestamp'=>date('Y-m-d H:i:s')];
+            $choosen = ['picked'=>array_rand($draw_from), 'timestamp'=>date('Y-m-d H:i:s')];
         }
     }
 
