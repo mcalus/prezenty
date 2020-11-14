@@ -31,6 +31,10 @@ if(isset($_POST['logout']) || $_GET['page'] == 'logout') {
     die();
 }
 
+if(isset($_SESSION['env'])) {
+    $config = $config['enviroments'][$_SESSION['env']];
+}
+
 // ACTION - Save person to a list
 if($_GET['page'] == 'save') {
     $name = trim($_POST['name']);
