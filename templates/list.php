@@ -1,5 +1,5 @@
 
-<p>Lista zapisanych osób</p>
+<h1>Lista zapisanych osób</h1>
 
 <ul class="list">
     <?php

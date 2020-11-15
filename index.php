@@ -8,6 +8,7 @@ $homepage = '/list';
 $config = getDBFile('config');
 $list = getDBFile('list');
 $drawn = getDBFile('drawn');
+$quiz = getDBFile('quiz');
 
 // ACTION - Logging into system
 if($_POST['pass']) {
@@ -71,6 +72,34 @@ if($_GET['page'] == 'pick') {
     die();
 }
 
+if($_GET['page'] == 'answer') {
+    $answers = array();
+    $allGood = true;
+
+    foreach($quiz['questions'] as $id=>$question) {
+        if($question['active']) {
+            $answer = strtolower(trim($_POST['answer_'.$id]));
+
+            if(in_array($answer, $question['answers'])) {
+                $answers[$id] = true;
+            }
+            else {
+                $answers[$id] = false;
+                $allGood = false;
+            }
+        }
+    }
+
+    if($allGood)
+        $_SESSION['message'] = 'Wszystkie dobre odpowiedzi!';
+    else
+        $_SESSION['message'] = 'Złe odpowiedzi';
+
+
+    header("Location: ".$homepage);
+    die(); 
+}
+
 
 // Get flash messages from other actions
 $message = '';
@@ -93,6 +122,8 @@ if(isset($_SESSION['env'])) {
         case 'list': include('templates/list.php'); break;
         // Form to choose as who you want to draw a person
         case 'draw': include('templates/draw.php'); break;
+        // Christmas quiz
+        case 'quiz': include('templates/quiz.php'); break;
         // Form to save on list
         default: include('templates/form.php'); 
     }

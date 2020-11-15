@@ -1,7 +1,7 @@
 
 <div class="login-box">
-    Logowanie
-    <br /><br />
+    <h1>Logowanie</h1>
+    
     <form method="post">
         <div class="user-box">
             <input type="password" name="pass" placeholder="hasło" />

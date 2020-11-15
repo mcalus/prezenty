@@ -1,7 +1,7 @@
 
 
 <div class="login-box">
-  <p>Zapisz się na święta <?=date('Y')?></p>
+  <h1>Zapisz się na święta <?=date('Y')?></h1>
 
   <form method="post" action="/save">
       <div class="user-box">
@@ -15,7 +15,6 @@
         <span></span>
         Zapisz się!
       </a>
-      <!-- <input type="text" name="mail" placeholder="mail" /> -->
-      <!-- <input type="submit" value="Zapisz się!" /> -->
+      <!-- <input type="text" name="mail" placeholder="mail" />-->
   </form>
 </div>

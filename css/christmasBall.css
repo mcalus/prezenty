@@ -385,7 +385,8 @@ body.night {
 
 @media screen and (min-width: 992px) {
 	.illustItem--fencePost.illustItem--fencePost--first {
-		left: 20%;
+		/* left: 20%; */
+		left: 28%;
 	}
 }
 
@@ -999,4 +1000,24 @@ body.night {
 	.page-footer-links .page-footer-site {
 		margin-left: 20px;
 	}
+}
+
+
+
+
+
+
+/* Customization */
+
+.symbol--christmascards .symbol-title {
+	margin-top: -15px;
+}
+
+.symbol--nutcracker .symbol-title {
+	width: 141px;
+}
+
+.symbol--present .symbol-title {
+	width: 110px;
+    height: 40px;
 }

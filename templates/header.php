@@ -142,14 +142,15 @@
 <?php if($config['drawOpen']) { ?>
     <a class="navbar-brand" href="/draw">Losowanie</a>
 <?php } ?>
+<?php if($config['quiz']) { ?>
+    <a class="navbar-brand" href="/quiz">Quiz</a>
+<?php } ?>
     <a class="navbar-brand" href="/logout">Wyloguj</a>
 </nav>
 
 
 <!-- <audio controls autoplay id="bgsound" src="Carol of the Bells (from Christmas Demolition).mp3" preload="auto">  -->
 <audio loop id="bgsound" src="Love Actually - The Original Soundtrack-05-Christmas Is All Around.mp3" preload="auto"></audio> 
-
-<br />
 
 <?php } ?>
 

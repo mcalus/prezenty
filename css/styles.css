@@ -53,3 +53,7 @@ nav a {
 nav a:first-child {
     padding-left: 0;
 }
+
+.message {
+    font-size: 18px;
+}
