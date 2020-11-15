@@ -129,6 +129,7 @@
     <?=$config['title']?> <?=date('Y')?>
     <br />
     <b><?=$list[$_SESSION['choosen']['picker']]['name']?></b> robi prezent dla <b><?=$list[$_SESSION['choosen']['picked']]['name']?></b>
+    <br />oraz dla <b>NELI I JASIA!</b>
 </div>
 <?php 
     unset($_SESSION['choosen']); 
