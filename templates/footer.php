@@ -36,19 +36,6 @@
     }
 
 
-    function toggleAudio() {
-        var audio = document.getElementById('bgsound');
-        if(!audio.paused) {
-            audio.pause();
-            document.getElementById('musicButton').innerHTML = 'Play';
-        }
-        else {
-            audio.play();
-            document.getElementById('musicButton').innerHTML = 'Stop';
-        }
-    }
-
-
     function setCookie(c_name,value,exdays)
     {
         var exdate=new Date();
@@ -72,29 +59,57 @@
         }
     }
 
+    
+
+
     var song = document.getElementById('bgsound');
+    function toggleAudio() {
+        if(!song.paused) {
+            song.pause();
+            setCookie('userPause', 1);
+        }
+        else {
+            // song.play();
+            played = false;
+            userPause = "0";
+            setCookie('userPause', 0);
+        }
+        songUpdate();
+    }
+
+    function songUpdate() {
+        if(song.paused) 
+            document.getElementById('musicButton').innerHTML = 'Play';
+        else 
+            document.getElementById('musicButton').innerHTML = 'Stop';
+    }
+
     if(song) {
         var played = false;
         var tillPlayed = getCookie('timePlayed');
+        var userPause = getCookie('userPause');
+        
         function update()
         {
-            if(!played){
-                if(tillPlayed){
-                song.currentTime = tillPlayed;
-                song.play();
-                played = true;
-                }
-                else {
+            if(userPause !== "1") {
+                if(!played){
+                    if(tillPlayed){
+                        song.currentTime = tillPlayed;
                         song.play();
                         played = true;
+                    }
+                    else {
+                        song.play();
+                        played = true;
+                    }
+                    songUpdate();
+                }
+                else {
+                    setCookie('timePlayed', song.currentTime);
                 }
             }
-
-            else {
-            setCookie('timePlayed', song.currentTime);
-            }
         }
-        setInterval(update,1000);
+        setInterval(update,500);
     }
 </script>
 

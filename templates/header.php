@@ -136,7 +136,7 @@
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a href="#" id="musicButton" onClick="toggleAudio(); return false;">Stop</a>
+    <a href="#" id="musicButton" onClick="toggleAudio(); return false;"><?=($_COOKIE['userPause']=="0"?'Stop':'Play')?></a>
     <a class="navbar-brand" href="/">Zapisz się</a>
     <a class="navbar-brand" href="/list">Lista</a>
 <?php if($config['drawOpen']) { ?>
