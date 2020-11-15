@@ -1,5 +1,5 @@
 
-<h1>Lista zapisanych osób</h1>
+<h1>Lista zapisanych osób na <?=$config['title']?> <?=date('Y')?></h1>
 
 <ul class="list">
     <?php

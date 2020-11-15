@@ -77,7 +77,7 @@
       
       <div class="illust-level illust-level--symbolsTown">
         <div class="illustItem illustItem--yuletide symbol symbol--yuletide">
-          <h2 class="symbol-title">Święta <?=date('Y')?></h2>
+          <h2 class="symbol-title"><?=$config['title']?> <?=date('Y')?></h2>
         </div>
         <div class="symbols--outside">
           <div class="illustItem illustItem--carols symbol symbol--carols">
@@ -126,7 +126,7 @@
 
 <?php if($_SESSION['choosen']) { ?>
 <div id="drawPopup" class="drawPopup">
-    Święta <?=date('Y')?>
+    <?=$config['title']?> <?=date('Y')?>
     <br />
     <b><?=$list[$_SESSION['choosen']['picker']]['name']?></b> robi prezent dla <b><?=$list[$_SESSION['choosen']['picked']]['name']?></b>
 </div>
