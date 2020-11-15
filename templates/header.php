@@ -149,8 +149,9 @@
 </nav>
 
 
-<!-- <audio controls autoplay id="bgsound" src="Carol of the Bells (from Christmas Demolition).mp3" preload="auto">  -->
-<audio loop id="bgsound" src="Love Actually - The Original Soundtrack-05-Christmas Is All Around.mp3" preload="auto"></audio> 
+<!-- <audio controls autoplay id="bgsound" src="audio/Carol of the Bells (from Christmas Demolition).mp3" preload="auto">  -->
+<!-- <audio loop id="bgsound" src="audio/Love Actually - The Original Soundtrack-05-Christmas Is All Around.mp3" preload="auto"></audio>  -->
+<audio loop id="bgsound" src="audio/Club Penguin High Quality OST - Christmas Theme.mp3" preload="auto"></audio> 
 
 <?php } ?>
 
