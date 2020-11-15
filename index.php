@@ -62,7 +62,7 @@ if($_GET['page'] == 'pick') {
 
         file_put_contents('db/drawn.json', json_encode($drawn, JSON_FORCE_OBJECT));
 
-        $_SESSION['message'] = 'Wylosowałes swoją osobę na święta '. date('Y') .': <b>'. $list[$choosen['picked']]['name'] .'</b>';
+        $_SESSION['message'] = 'Wylosowałes swoją osobę na święta '. date('Y') .': <b style="color:red;">'. $list[$choosen['picked']]['name'] .'</b>';
         $_SESSION['choosen'] = $choosen;
         $_SESSION['choosen']['picker'] = $_POST['picker'];
     }
@@ -85,7 +85,7 @@ include('templates/header.php');
 
 // Check if you are looged in and to which environment
 if(isset($_SESSION['env'])) {
-    echo $_SESSION['env'] . "<br /><br />"; 
+    echo '<!--'. $_SESSION['env'] .'-->'; 
 
     // Which sub page to display
     switch($_GET['page']) {
