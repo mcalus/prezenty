@@ -63,7 +63,7 @@ if(isset($_SESSION['env'])) {
             saveDBFile('drawn', $drawn, $_SESSION['env']);
 
             $_SESSION['message'] = 'Wylosowałes swoją osobę na '.$config['title'].' '. date('Y') .': <b style="color:red;">'. $list[$choosen['picked']]['name'] .'</b>
-            <br />ORAZ <b>NELĘ I JASIA!</b>';
+            <br />oraz <b>NELĘ I JASIA!</b>';
             $_SESSION['choosen'] = $choosen;
             $_SESSION['choosen']['picker'] = $_POST['picker'];
         }
