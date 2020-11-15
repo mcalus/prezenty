@@ -75,17 +75,23 @@ if($_GET['page'] == 'pick') {
 if($_GET['page'] == 'answer') {
     $answers = array();
     $allGood = true;
-
+    
     foreach($quiz['questions'] as $id=>$question) {
         if($question['active']) {
+            $_SESSION['answers']['answer_'.$id] = array();
+            $_SESSION['answers']['answer_'.$id]['answer'] = trim($_POST['answer_'.$id]);
+
             $answer = strtolower(trim($_POST['answer_'.$id]));
 
             if(in_array($answer, $question['answers'])) {
                 $answers[$id] = true;
+                $_SESSION['answers']['answer_'.$id]['valid'] = 1;
             }
             else {
                 $answers[$id] = false;
                 $allGood = false;
+                if($answer)
+                    $_SESSION['answers']['answer_'.$id]['valid'] = -1;
             }
         }
     }
@@ -93,10 +99,10 @@ if($_GET['page'] == 'answer') {
     if($allGood)
         $_SESSION['message'] = 'Wszystkie dobre odpowiedzi!';
     else
-        $_SESSION['message'] = 'Złe odpowiedzi';
+        $_SESSION['message'] = 'Czegoś brakuje...';
 
 
-    header("Location: ".$homepage);
+    header("Location: /quiz");
     die(); 
 }
 

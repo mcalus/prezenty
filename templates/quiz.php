@@ -2,15 +2,21 @@
 
 <div class="login-box">
   <h1>Świąteczny quiz <?=date('Y')?></h1>
+  <p>Odpowiedzi zapisują się do zalogowanej przeglądarki. Po wylogowaniu zostają usunięte.</p>
 
   <form method="post" action="/answer">
-      <?php if(isset($quiz['questions'])) { 
+      <?php if(isset($quiz['questions'])) {
+            $answersUser = $_SESSION['answers'];
+            
             foreach($quiz['questions'] as $id=>$question) {
               if($question['active']) {
       ?>
       
       <div class="user-box">
-          <input type="text" name="answer_<?=$id?>" />
+          <input type="text" name="answer_<?=$id?>" 
+            class="<?=($answersUser['answer_'.$id]['valid'] == 1?'goodAnswer':($answersUser['answer_'.$id]['valid'] == -1?'errorAnswer':''))?>" 
+            value="<?=(isset($answersUser['answer_'.$id]['answer'])?$answersUser['answer_'.$id]['answer']:'')?>" 
+          />
           <label><?=$question['question']?></label>
       </div>
 
