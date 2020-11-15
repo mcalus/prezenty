@@ -6,7 +6,7 @@
 
   <form method="post" action="/answer">
       <?php if(isset($quiz['questions'])) {
-            $answersUser = $_SESSION['answers'];
+            $answersUser = $_SESSION['answers'][$_SESSION['env']];
             
             foreach($quiz['questions'] as $id=>$question) {
               if($question['active']) {

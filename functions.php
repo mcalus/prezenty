@@ -1,7 +1,11 @@
 <?php
 
-// Get JSON from a file DB
-function getDBFile($name) {
+// Get JSON from a DB file
+function getDBFile($name, $env = false) {
+    // Path to specyfic enviroment
+    if($env)
+        $name = $env.'/'.$name;
+
     // Checking if file exits, if not then create empty one
     if(!file_exists("db/". $name .".json")) {
         $fp = fopen("db/". $name .".json", 'w');
@@ -14,6 +18,22 @@ function getDBFile($name) {
         $data = array();
 
     return $data;
+}
+
+// Save JSON or Array to a DB file
+function saveDBFile($name, $data, $env = false) {
+    // Path to specyfic enviroment
+    if($env)
+        $name = $env.'/'.$name;$name = $env.'/'.$name;
+
+    // Convert array to JSON object
+    if(is_array($data))
+        $data = json_encode($data, JSON_FORCE_OBJECT);
+
+    // Save the file
+    file_put_contents('db/'. $name .'.json', $data);
+
+    return true;
 }
 
 

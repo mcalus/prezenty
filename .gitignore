@@ -1,7 +1,4 @@
-db/config.json
-db/list.json
-db/drawn.json
-db/quiz.json
+db/*
 
 img/*
 christmasBall/*
