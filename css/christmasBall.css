@@ -1021,3 +1021,7 @@ body.night {
 	width: 110px;
     height: 40px;
 }
+
+.page-footer-info {
+	font-size: 10px;
+}

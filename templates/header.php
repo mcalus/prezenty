@@ -115,7 +115,9 @@
     <ul class="unstyled page-footer-links">
         <li>
             <a href="#" onClick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Wróć do menu</a>
-            <br /><br />
+            <br />
+            <a class="page-footer-info" href="https://twitter.com/AshNolan_" target="_blank">Template by AshNolan_</a>
+            <br />
         </li>
     </ul>
   </div>
