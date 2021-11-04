@@ -1,7 +1,7 @@
 
 
 <div class="login-box">
-  <h1>Zapisz się na <?=$config['title']?> <?=date('Y')?></h1>
+  <h1>Zapisz się na <?=$config['title']?> <?=$config['year']?></h1>
 
   <form method="post" action="/save">
       <div class="user-box">

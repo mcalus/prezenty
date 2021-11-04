@@ -35,6 +35,9 @@ if(isset($_SESSION['env'])) {
     $drawn = getDBFile('drawn', $_SESSION['env']);
     $quiz = getDBFile('quiz', $_SESSION['env']);
 
+    if(!isset($config['year']) || empty($config['year']))
+        $config['year'] = date('Y');
+
     // ACTION - Save person to a list
     if($_GET['page'] == 'save') {
         $name = trim($_POST['name']);
@@ -45,7 +48,7 @@ if(isset($_SESSION['env'])) {
             $list[] = ['name'=>$name, 'mail'=>$mail, 'timestamp'=>date('Y-m-d H:i:s')];
             saveDBFile('list', $list, $_SESSION['env']);
 
-            $_SESSION['message'] = 'Zapisano Cię do listy prezentów na rok '.date('Y');
+            $_SESSION['message'] = 'Zapisano Cię do listy prezentów na rok '.$config['year'];
         }
         
         header("Location: ".$homepage);
@@ -62,7 +65,7 @@ if(isset($_SESSION['env'])) {
 
             saveDBFile('drawn', $drawn, $_SESSION['env']);
 
-            $_SESSION['message'] = 'Wylosowałes swoją osobę na '.$config['title'].' '. date('Y') .': <b style="color:red;">'. $list[$choosen['picked']]['name'] .'</b>
+            $_SESSION['message'] = 'Wylosowałes swoją osobę na '.$config['title'].' '. $config['year'] .': <b style="color:red;">'. $list[$choosen['picked']]['name'] .'</b>
             <br />oraz <b>NELĘ I JASIA!</b>';
             $_SESSION['choosen'] = $choosen;
             $_SESSION['choosen']['picker'] = $_POST['picker'];

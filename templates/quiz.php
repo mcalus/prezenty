@@ -1,7 +1,7 @@
 
 
 <div class="login-box">
-  <h1>Świąteczny quiz <?=date('Y')?></h1>
+  <h1>Świąteczny quiz <?=$config['year']?></h1>
   <p>Odpowiedzi zapisują się do zalogowanej przeglądarki. Po wylogowaniu zostają usunięte.</p>
 
   <form method="post" action="/answer">

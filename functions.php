@@ -3,8 +3,12 @@
 // Get JSON from a DB file
 function getDBFile($name, $env = false) {
     // Path to specyfic enviroment
-    if($env)
+    if($env) {
         $name = $env.'/'.$name;
+    
+        if(!is_dir("db/".$env))
+            mkdir("db/".$env);
+    }
 
     // Checking if file exits, if not then create empty one
     if(!file_exists("db/". $name .".json")) {
