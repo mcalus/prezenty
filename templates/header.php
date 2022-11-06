@@ -117,7 +117,7 @@
             <a href="#" onClick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Wróć do menu</a>
             <br />
             <a class="page-footer-info" href="https://twitter.com/AshNolan_" target="_blank">Template by AshNolan_</a>
-            <br />
+            <br /><?=$config['for_extras']?>
         </li>
     </ul>
   </div>
@@ -131,7 +131,7 @@
     <?=$config['title']?> <?=$config['year']?>
     <br />
     <b><?=$list[$_SESSION['choosen']['picker']]['name']?></b> robi prezent dla <b><?=$list[$_SESSION['choosen']['picked']]['name']?></b>
-    <br />oraz dla <b>NELI I JASIA!</b>
+    <br />
 </div>
 <?php 
     unset($_SESSION['choosen']); 
