@@ -1,4 +1,8 @@
-
+<?php if(!$config['joinOpen']) { ?>
+    
+<p>Przepraszamy ale zapisywanie jest już wyłączone (prawdopodobnie losowanie się zaczęło).</p>
+    
+<?php }else{ ?>
 
 <div class="login-box">
   <h1>Zapisz się na <?=$config['title']?> <?=$config['year']?></h1>
@@ -18,3 +22,5 @@
       <!-- <input type="text" name="mail" placeholder="mail" />-->
   </form>
 </div>
+
+<?php } ?>

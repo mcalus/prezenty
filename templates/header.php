@@ -140,7 +140,9 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a href="#" id="musicButton" onClick="toggleAudio(); return false;"><?=($_COOKIE['userPause']=="0"?'Stop':'Play')?></a>
+<?php if($config['joinOpen']) { ?>
     <a class="navbar-brand" href="/">Zapisz się</a>
+<?php } ?>
     <a class="navbar-brand" href="/list">Lista</a>
 <?php if($config['drawOpen']) { ?>
     <a class="navbar-brand" href="/draw">Losowanie</a>
