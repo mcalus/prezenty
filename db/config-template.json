@@ -1,0 +1,21 @@
+{
+    "passwords": {
+        "devpass": "devenv"
+    },
+    "old_passwords": {
+        "devpass2": "devenv2"
+    },
+    "enviroments": {
+        "devenv": {
+            "title":"Test",
+            "year":"2020",
+            "drawOpen": false,
+            "joinOpen": false,
+            "spouses": false, 
+            "checking": false, 
+            "quiz": false,
+            "song": "music.mp3",
+            "for_extras":"and for kids"
+        }
+    }
+}

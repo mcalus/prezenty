@@ -1,8 +1,10 @@
-db/*
+db/*/
+db/config.json
 
 img/*
-christmasBall/*
+audio/*
+!.gitkeep 
 
-audio/*  
+christmasBall/*
 
 ftp-sync.json

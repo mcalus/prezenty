@@ -65,8 +65,9 @@ if(isset($_SESSION['env'])) {
 
             saveDBFile('drawn', $drawn, $_SESSION['env']);
 
-            $_SESSION['message'] = 'Wylosowałes swoją osobę na '.$config['title'].' '. $config['year'] .': <b style="color:red;">'. $list[$choosen['picked']]['name'] .'</b>
-            <br />oraz <b>NELĘ I JASIA!</b>';
+            $_SESSION['message'] = 'Wylosowałes swoją osobę na '.$config['title'].' '. $config['year'] .': <b style="color:red;">'. $list[$choosen['picked']]['name'] .'</b>';
+            if(isset($config['for_extras']) && $config['for_extras'] != "")
+                $_SESSION['message'] .= '<br />'.$config['for_extras'];
             $_SESSION['choosen'] = $choosen;
             $_SESSION['choosen']['picker'] = $_POST['picker'];
         }

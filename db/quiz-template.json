@@ -1,0 +1,48 @@
+{
+    "questions" : {
+        "1":{
+            "active":true,
+            "question":"Ile jest reniferów?", 
+            "answers": [
+                "14",
+                "czternaście",
+                "czternascie"
+            ]
+        },
+        "2":{
+            "active":true,
+            "question":"Jakie zwierzęta towarzyszą Świętej Rodzinie?", 
+            "answers": [
+                "kot i owca",
+                "kot owca"
+            ]
+        },
+        "3":{
+            "active":true,
+            "question":"Jaki film jest w telewizji?", 
+            "answers": [
+                "the grinch",
+                "grinch"
+            ]
+        },
+        "4":{
+            "active":true,
+            "question":"Dla kogo są prezenty pod choinką?", 
+            "answers": [
+                "jaś i nela",
+                "jas i nela",
+                "jaś nela",
+                "jas nela"
+            ]
+        },
+        "5":{
+            "active":true,
+            "question":"Ilu ludzi jest na zewnątrz?", 
+            "answers": [
+                "9",
+                "dziewięć",
+                "dziewiec"
+            ]
+        }
+    }
+}

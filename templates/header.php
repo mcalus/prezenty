@@ -131,6 +131,10 @@
     <?=$config['title']?> <?=$config['year']?>
     <br />
     <b><?=$list[$_SESSION['choosen']['picker']]['name']?></b> robi prezent dla <b><?=$list[$_SESSION['choosen']['picked']]['name']?></b>
+    <?php
+      if(isset($config['for_extras']) && $config['for_extras'] != "")
+        echo '<br />'.$config['for_extras'];
+    ?>
     <br />
 </div>
 <?php 
