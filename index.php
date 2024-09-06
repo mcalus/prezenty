@@ -109,6 +109,76 @@ if(isset($_SESSION['env'])) {
         header("Location: /quiz");
         die(); 
     }
+
+    if($_SESSION['env'] == 'admin') {
+        if(substr($_GET['page'], 0, 7) == 'copyEnv') {
+            $enviroment = substr($_GET['page'], 7);
+            $enviroments = getDBFile('config');
+
+            $enviroments['enviroments'][$enviroment.date('YYYY')] = $enviroments['enviroments'][$enviroment];
+            $password = array_search($enviroment, $enviroments['passwords']);
+            $enviroments['passwords'][$enviroment.date('YYYY')] = $enviroment.date('YYYY');
+            
+            $enviromentlist = getDBFile('list', $enviroment);
+            saveDBFile('list', $enviromentlist, $enviroment.date('YYYY'));
+
+            saveDBFile('config', $enviroments);
+            
+            header("Location: ".$homepage);
+            die();
+        }
+
+        elseif(substr($_GET['page'], 0, 7) == 'editEnv') {
+            $enviroment = substr($_GET['page'], 7);
+            $enviroments = getDBFile('config');
+
+            unset($enviroments['passwords'][array_search($enviroment, $enviroments['passwords'])]);
+            $enviroments['passwords'][$_POST['pass']] = $_POST['env'];
+
+            $temp_env = $enviroments['enviroments'][$enviroment];
+            unset($enviroments['enviroments'][$enviroment]);
+
+            foreach($temp_env as $key=>$value) {
+                $enviroments['enviroments'][$_POST['env']][$key]= trim($_POST[$key]);
+            }
+            
+            saveDBFile('config', $enviroments);
+
+            header("Location: ".$homepage);
+            die();
+        }
+
+        elseif(substr($_GET['page'], 0, 10) == 'toggleDraw') {
+            $enviroment = substr($_GET['page'], 10);
+            $enviroments = getDBFile('config');
+
+            $enviroments['enviroments'][$enviroment]['drawOpen'] = !$enviroments['enviroments'][$enviroment]['drawOpen'];
+            
+            saveDBFile('config', $enviroments);
+
+            header("Location: ".$homepage);
+            die();
+        }   
+
+        elseif(substr($_GET['page'], 0, 11) == 'restartDraw') {
+            $enviroment = substr($_GET['page'], 11);
+
+            unlink('db/'.$enviroment.'/drawn.json');
+
+            header("Location: ".$homepage);
+            die();
+        }   
+
+        elseif(substr($_GET['page'], 0, 10) == 'deletePeople') {
+            $enviroment = substr($_GET['page'], 10);
+
+            unlink('db/'.$enviroment.'/list.json');
+            unlink('db/'.$enviroment.'/drawn.json');
+
+            header("Location: ".$homepage);
+            die();
+        }   
+    }   
 }
 
 
@@ -125,18 +195,24 @@ include('templates/header.php');
 
 // Check if you are looged in and to which environment
 if(isset($_SESSION['env'])) {
-    echo '<!--'. $_SESSION['env'] .'-->'; 
+    echo '<!--'. $_SESSION['env'] .'-->';
 
-    // Which sub page to display
-    switch($_GET['page']) {
-        // List of all saved persons
-        case 'list': include('templates/list.php'); break;
-        // Form to choose as who you want to draw a person
-        case 'draw': include('templates/draw.php'); break;
-        // Christmas quiz
-        case 'quiz': include('templates/quiz.php'); break;
-        // Form to save on list
-        default: include('templates/form.php'); 
+    if($_SESSION['env'] == 'admin') {
+        // Admin panel
+        include('templates/admin.php');
+    }
+    else {
+        // Which sub page to display
+        switch($_GET['page']) {
+            // List of all saved persons
+            case 'list': include('templates/list.php'); break;
+            // Form to choose as who you want to draw a person
+            case 'draw': include('templates/draw.php'); break;
+            // Christmas quiz
+            case 'quiz': include('templates/quiz.php'); break;
+            // Form to save on list
+            default: include('templates/form.php'); 
+        }
     }
 }
 else {

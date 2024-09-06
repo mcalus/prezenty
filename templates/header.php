@@ -10,6 +10,10 @@
     <link href='https://fonts.googleapis.com/css?family=Sancreek' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="css/forms.css" />
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+    <link rel="stylesheet" href="css/material.min.css"/>
+    <link rel="stylesheet" href="css/material-blue.min.css"/>
+    <script src="js/material.min.js"></script>
 </head>
 
 <body class="container" id="mainBody">

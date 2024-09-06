@@ -1,11 +1,15 @@
 {
     "passwords": {
+        "adminpass": "admin",
         "devpass": "devenv"
     },
     "old_passwords": {
         "devpass2": "devenv2"
     },
     "enviroments": {
+        "admin": {
+            "title":"ADMIN"
+        },
         "devenv": {
             "title":"Test",
             "year":"2020",
