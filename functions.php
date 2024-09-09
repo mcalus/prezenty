@@ -29,6 +29,9 @@ function saveDBFile($name, $data, $env = false) {
     // Path to specyfic enviroment
     if($env)
         $name = $env.'/'.$name;
+    
+    if(!is_dir("db/".$env))
+        mkdir("db/".$env);
 
     // Convert array to JSON object
     if(is_array($data))

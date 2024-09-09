@@ -114,13 +114,14 @@ if(isset($_SESSION['env'])) {
         if(substr($_GET['page'], 0, 7) == 'copyEnv') {
             $enviroment = substr($_GET['page'], 7);
             $enviroments = getDBFile('config');
+            $enviromentID = $enviroment.date('Ym');
 
-            $enviroments['enviroments'][$enviroment.date('YYYY')] = $enviroments['enviroments'][$enviroment];
+            $enviroments['enviroments'][$enviromentID] = $enviroments['enviroments'][$enviroment];
             $password = array_search($enviroment, $enviroments['passwords']);
-            $enviroments['passwords'][$enviroment.date('YYYY')] = $enviroment.date('YYYY');
+            $enviroments['passwords'][$enviromentID] = $enviromentID;
             
             $enviromentlist = getDBFile('list', $enviroment);
-            saveDBFile('list', $enviromentlist, $enviroment.date('YYYY'));
+            saveDBFile('list', $enviromentlist, $enviromentID);
 
             saveDBFile('config', $enviroments);
             
@@ -129,17 +130,17 @@ if(isset($_SESSION['env'])) {
         }
 
         elseif(substr($_GET['page'], 0, 7) == 'editEnv') {
-            $enviroment = substr($_GET['page'], 7);
+            $enviroment = $_POST['env'];
             $enviroments = getDBFile('config');
 
             unset($enviroments['passwords'][array_search($enviroment, $enviroments['passwords'])]);
-            $enviroments['passwords'][$_POST['pass']] = $_POST['env'];
+            $enviroments['passwords'][$_POST['password']] = $_POST['ID'];
 
             $temp_env = $enviroments['enviroments'][$enviroment];
             unset($enviroments['enviroments'][$enviroment]);
 
             foreach($temp_env as $key=>$value) {
-                $enviroments['enviroments'][$_POST['env']][$key]= trim($_POST[$key]);
+                $enviroments['enviroments'][$_POST['ID']][$key]= trim($_POST[$key]);
             }
             
             saveDBFile('config', $enviroments);
@@ -169,8 +170,8 @@ if(isset($_SESSION['env'])) {
             die();
         }   
 
-        elseif(substr($_GET['page'], 0, 10) == 'deletePeople') {
-            $enviroment = substr($_GET['page'], 10);
+        elseif(substr($_GET['page'], 0, 12) == 'deletePeople') {
+            $enviroment = substr($_GET['page'], 12);
 
             unlink('db/'.$enviroment.'/list.json');
             unlink('db/'.$enviroment.'/drawn.json');

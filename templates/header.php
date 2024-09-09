@@ -11,9 +11,7 @@
     <link rel="stylesheet" type="text/css" href="css/forms.css" />
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
 
-    <link rel="stylesheet" href="css/material.min.css"/>
-    <link rel="stylesheet" href="css/material-blue.min.css"/>
-    <script src="js/material.min.js"></script>
+    <link rel="stylesheet" href="css/icon.css"/>
 </head>
 
 <body class="container" id="mainBody">
@@ -147,6 +145,7 @@
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<?php if($_SESSION['env'] != 'admin') { ?>
     <a href="#" id="musicButton" onClick="toggleAudio(); return false;"><?=($_COOKIE['userPause']=="0"?'Stop':'Play')?></a>
 <?php if($config['joinOpen']) { ?>
     <a class="navbar-brand" href="/">Zapisz się</a>
@@ -158,11 +157,13 @@
 <?php if($config['quiz']) { ?>
     <a class="navbar-brand" href="/quiz">Quiz</a>
 <?php } ?>
+<?php } ?>
     <a class="navbar-brand" href="/logout">Wyloguj</a>
 </nav>
 
-
+<?php if($config['song']) { ?>
 <audio loop id="bgsound" src="audio/<?=$config['song']?>" preload="auto"></audio> 
+<?php } ?>
 
 <?php } ?>
 
