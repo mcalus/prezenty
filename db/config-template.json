@@ -10,8 +10,8 @@
         "admin": {
             "title":"ADMIN"
         },
-        "devenv": {
-            "title":"Test",
+        "template": {
+            "title":"Christmas",
             "year":"2020",
             "drawOpen": false,
             "joinOpen": false,

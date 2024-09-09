@@ -8,7 +8,7 @@
 <?php if(isset($_SESSION['env'])) { ?>
 <script src='js/christmasBall.js'></script>
 <?php } ?>
-<script src='js/konami.js'></script>
+<script src='js/konami2.js'></script>
 <script src='js/easteregg.js'></script>
 <script src='js/fallingImages.js'></script>
 <!-- <script src='js/snowflakes.js'></script> -->

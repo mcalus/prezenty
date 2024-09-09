@@ -3,33 +3,33 @@ var myImages = new Array("download.jpg", "download (1).jpg", "06715ba633ee1b0a34
 var folderImages = "img/random santas/";
 var spawnedImages = [];
 
-url_string = "C:/Users/mcalus/OneDrive%20-%20GXO/Desktop/Programmer/Projects/prezenty/img/random santas";
-url = new URL(url_string);
-options = url.searchParams.getAll("options[]");
-console.log(options);
+// url_string = "http://prezenty.calusy.com.pl/img/random santas";
+// url = new URL(url_string);
+// options = url.searchParams.getAll("options[]");
+// console.log(options);
 
-function loadDoc() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-        myFunction(this);
-    }
-    };
-    xhttp.open("GET", url_string, true);
-    xhttp.send();
-}
+// function loadDoc() {
+//     var xhttp = new XMLHttpRequest();
+//     xhttp.onreadystatechange = function () {
+//     if (this.readyState == 4 && this.status == 200) {
+//         myFunction(this);
+//     }
+//     };
+//     xhttp.open("GET", url_string, true);
+//     xhttp.send();
+// }
 
-function myFunction(xml) {
-    // console.log(xml.responseText)
-    var parser = new DOMParser();
-    var htmlDoc = parser.parseFromString(xml.responseText, 'text/html');
-    var preList = htmlDoc.getElementsByTagName("pre")[0].getElementsByTagName("a")
-    for (i = 1; i < preList.length; i++) {
-    console.log(preList[i].innerHTML)
-    }
-}
+// function myFunction(xml) {
+//     // console.log(xml.responseText)
+//     var parser = new DOMParser();
+//     var htmlDoc = parser.parseFromString(xml.responseText, 'text/html');
+//     var preList = htmlDoc.getElementsByTagName("pre")[0].getElementsByTagName("a")
+//     for (i = 1; i < preList.length; i++) {
+//     console.log(preList[i].innerHTML)
+//     }
+// }
 
-loadDoc();
+// loadDoc();
 
 
 function spawnImg()
