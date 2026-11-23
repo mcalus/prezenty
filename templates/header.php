@@ -26,56 +26,56 @@
     <div class="illust-level illust-level--intro">
       <div class="illustItem illustItem--bgGrass"></div>
       <div class="illustItem illustItem--fencePost illustItem--fencePost--first">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/12207/fencepost.svg" alt="Fence post">
+        <img src="/img/ChristmasBall/fencepost.svg" alt="Fence post">
         <div class="illustItem illustItem--northpole illustItem--fence-arrow illustItem--fence-arrow-left symbol symbol--northpole">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/12207/fence-arrow-left.svg" alt="Fence post Arrow Left">
+          <img src="/img/ChristmasBall/fence-arrow-left.svg" alt="Fence post Arrow Left">
           <h2 class="symbol-title">Biegun północny</h2>
         </div>
         <div class="illustItem illustItem--grotto illustItem--fence-arrow illustItem--fence-arrow-right symbol symbol--grotto">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/12207/fence-arrow-right.svg" alt="Fence post Arrow Right">
+          <img src="/img/ChristmasBall/fence-arrow-right.svg" alt="Fence post Arrow Right">
           <h2 class="symbol-title">Gdynia</h2>
         </div>
       </div>
       <div class="illustItem illustItem--holly symbol symbol--holly">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/12207/holly.svg" alt="Holly">
+        <img src="/img/ChristmasBall/holly.svg" alt="Holly">
       </div>
 
       <div class="illustItem illustItem--fencePost illustItem--fencePost--second">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/12207/fencepost.svg" alt="Fence post">
+        <img src="/img/ChristmasBall/fencepost.svg" alt="Fence post">
         <div class="illustItem illustItem--lapland illustItem--fence-arrow illustItem--fence-arrow-right symbol symbol--lapland">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/12207/fence-arrow-right.svg" alt="Fence post arrow right">
+          <img src="/img/ChristmasBall/fence-arrow-right.svg" alt="Fence post arrow right">
           <h2 class="symbol-title">Venlo</h2>
         </div>
       </div>
       <div class="illustItem illustItem--ivy symbol symbol--ivy">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/12207/ivy.svg" alt="Ivy">
+        <img src="/img/ChristmasBall/ivy.svg" alt="Ivy">
       </div>
     </div>
   </div>
   <div class="illust-level--town">
     <div class="illustItem illustItem--snowglobe">
-      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/12207/snowglobe.svg" alt="Snow Globe">
+      <img src="/img/ChristmasBall/snowglobe.svg" alt="Snow Globe">
     </div>
     <div class="illustItem illustItem--town">
-      <img class="svg-town" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/12207/town.svg" alt="Town">
+      <img class="svg-town" src="/img/ChristmasBall/town.svg" alt="Town">
       <div class="svg-house">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/12207/house.svg" alt="House">
-        <img class="svg-lights" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/12207/lights.svg" alt="lights">
+        <img src="/img/ChristmasBall/house.svg" alt="House">
+        <img class="svg-lights" src="/img/ChristmasBall/lights.svg" alt="lights">
       </div>
-      <img class="svg-sleigh" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/12207/sleigh.svg" alt="Sleigh">
+      <img class="svg-sleigh" src="/img/ChristmasBall/sleigh.svg" alt="Sleigh">
       <div class="svg-star inactive">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/12207/star.svg" alt="Star">
+        <img src="/img/ChristmasBall/star.svg" alt="Star">
       </div>
-      <img class="svg-sledge" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/12207/sledge.svg" alt="sledge">
-      <img class="svg-robins" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/12207/robins.svg" alt="robins">
-      <img class="svg-peace" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/12207/peace.svg" alt="peace">
-      <img class="svg-shopping" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/12207/shopping.svg" alt="shopping">
+      <img class="svg-sledge" src="/img/ChristmasBall/sledge.svg" alt="sledge">
+      <img class="svg-robins" src="/img/ChristmasBall/robins.svg" alt="robins">
+      <img class="svg-peace" src="/img/ChristmasBall/peace.svg" alt="peace">
+      <img class="svg-shopping" src="/img/ChristmasBall/shopping.svg" alt="shopping">
       <div class="svg-carollers">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/12207/carolers.svg" alt="carollers">
+        <img src="/img/ChristmasBall/carolers.svg" alt="carollers">
       </div>
-      <img class="svg-firstfloor" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/12207/firstfloor.svg" alt="firstfloor">
-      <img class="svg-secondfloor" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/12207/secondfloor.svg" alt="secondfloor">
-      <img class="svg-nativity" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/12207/nativity.svg" alt="nativity">
+      <img class="svg-firstfloor" src="/img/ChristmasBall/firstfloor.svg" alt="firstfloor">
+      <img class="svg-secondfloor" src="/img/ChristmasBall/secondfloor.svg" alt="secondfloor">
+      <img class="svg-nativity" src="/img/ChristmasBall/nativity.svg" alt="nativity">
       
       <div class="illust-level illust-level--symbolsTown">
         <div class="illustItem illustItem--yuletide symbol symbol--yuletide">

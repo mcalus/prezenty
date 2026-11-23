@@ -1,7 +1,9 @@
 db/*/
 db/config.json
 
-img/*
+img/macki
+img/random santas
+img/bg1.png
 audio/*
 !.gitkeep 
 
